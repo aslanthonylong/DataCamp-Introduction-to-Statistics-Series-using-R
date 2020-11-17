@@ -68,6 +68,31 @@ selection_vector_roulette <- roulette_vector > 0
 roulette_winning_days <- roulette_vector[selection_vector_roulette]
 print(roulette_winning_days)
 
+#Construct a Matrix
+## 3 rows taht contain numbers 1 up to 9
+matrix(data = 1:9, nrow = 3, byrow = TRUE)
+
+# Analyze Matrices
+## Box office Star Wars (in millions!)
+new_hope <- c(460.998, 314.4)
+empire_strikes <- c(290.475, 247.900)
+return_jedi <- c(309.306, 165.8)
+
+regions <- c("U.S.", "non-U.S.")
+titles_string <- c("A New Hope", "The Empire Strikes Back", "The Return of Jedi")
+box_office_titles <- c(new_hope, empire_strikes, return_jedi)
+star_wars_boxoffice <- matrix(box_office_titles, nrow = 3, ncol = 2, byrow = TRUE)
+
+print(star_wars_boxoffice)
+
+### Addnames to the matrix for easier visualization
+
+colnames(star_wars_boxoffice) <- regions
+rownames(star_wars_boxoffice) <- titles_string
+
+print(star_wars_boxoffice)
+
+
 
 
 
