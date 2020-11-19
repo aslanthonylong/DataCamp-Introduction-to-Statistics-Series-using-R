@@ -92,6 +92,46 @@ rownames(star_wars_boxoffice) <- titles_string
 
 print(star_wars_boxoffice)
 
+#Calculate sums of row within the matrix that was just created
+##Sums will be stored in new variable worldwide_revenue
+worldwide_revenue <- rowSums(star_wars_boxoffice)
+
+### Adding column or multiple columns
+combined_revenue_matrix <- cbind(star_wars_boxoffice, worldwide_revenue)
+# So what happened here? Using cbind(), I added the worldwide_revenue vector to the star_wars_boxoffice matrix
+  # Next, I assigned the new, combined matrix to a new varible entitled "combined_revenue_matrix"
+## As an FYI, you can add rows/combine matrices using "rbind()
+phanton_menace <- c(474.5, 552.5)
+attack_clones <- c(310.7, 338.7)
+revenge_sith <- c(380.3, 468.5)
+box_office_titles2 <-c(phanton_menace, attack_clones, revenge_sith)
+regions2 <- c("U.S.", "Non U.S.")
+titles_string2 <- c("The Phanton Menace", "Attack of The Clones", "Revenge of The Sith")
+star_wars_boxoffice_seq <- matrix(box_office_titles2, nrow = 3, ncol = 2, byrow = TRUE)
+colnames(star_wars_boxoffice_seq) <- regions2
+rownames(star_wars_boxoffice_seq) <- titles_string2
+all_revenue <- rbind(star_wars_boxoffice, star_wars_boxoffice_seq)
+#the "all_revenue" variable is now a combination of the data from the first star wars matrix and the sequals matrix
+
+### creating "total" revenue lines for analysis (different from 'all revenue')
+total_regional_rev <- colSums(all_revenue)
+total_title_rev <- rowSums(all_revenue)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
