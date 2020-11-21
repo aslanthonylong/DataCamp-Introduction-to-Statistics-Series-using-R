@@ -114,8 +114,50 @@ all_revenue <- rbind(star_wars_boxoffice, star_wars_boxoffice_seq)
 #the "all_revenue" variable is now a combination of the data from the first star wars matrix and the sequals matrix
 
 ### creating "total" revenue lines for analysis (different from 'all revenue')
-total_regional_rev <- colSums(all_revenue)
+  ### Add "Total" Column
 total_title_rev <- rowSums(all_revenue)
+totals_mtrx <- cbind(all_revenue, total_title_rev)
+totals_string <- "Total"
+Col_name_addition <- c(regions2, totals_string)
+colnames(totals_mtrx) <- Col_name_addition
+  ### Add "Total" Row
+total_regional_rev <- colSums(all_revenue)
+row_totals_string <- "Total"
+totals_mtrx_all <- rbind(all_revenue, total_regional_rev)
+row_name_addition <- c(titles_string, titles_string2, totals_string)
+rownames(totals_mtrx_all) <- row_name_addition
+
+### Selection of Matrix elements; They are typically formatted [rows,columns]
+#### Exmple: I want to select the 3rd row of 4th column --- I'd write: my_matrix[3,4]
+  # If I want multiple from whatever matrix ---- I'd write: my_matrix[1:3,2:4]
+    ## This would select rows 1 through 3 and columns 2 through 4
+### Select the non-U.S. revenue for all movies
+non_us_all <- all_revenue[,2]
+### then find avg. for all of the non-US regional box office revenue
+mean(non_us_all)
+### Select the non-US revenue for the first two movies
+non_us_some <- all_revenue[1:2,2]
+### Avg. of the first two moves (non-US)
+mean(non_us_some)
+
+### Arithmetic with Matrices - using math operations with matrix
+### Example: 2 * my_matrix would multiply all values within my matrix by 2
+### Assume each ticket price was $5 and you wanted to know how many visitors there were
+number_visitors <- all_revenue / 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
