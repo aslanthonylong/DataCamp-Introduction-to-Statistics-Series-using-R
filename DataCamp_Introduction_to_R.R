@@ -145,6 +145,74 @@ mean(non_us_some)
 ### Assume each ticket price was $5 and you wanted to know how many visitors there were
 number_visitors <- all_revenue / 5
 
+#Factors
+## Assign "factors" to theory variable
+theory <- "factors"
+# To create factors in R, need to use factor()
+  # First, create vector that contains all observations that belong to a lmtd. number of categories
+sex_vector <- c("Male", "Female", "Female", "Male", "Male")
+# convert sex_vector to a factor
+factor_sex_vector <- factor(sex_vector)
+## print factor_sex_vector
+print(factor_sex_vector)
+### Two types of categorical variables: nominal categorical; ordinal categorical
+  ### nominal: categorical variable without implied order (list of animals)
+  ### ordinal: categorical variables with implied natural ordering
+      # example of ordinal: the variable temperature_vector with categories: "High", "Medium", "Low"
+
+## NOMINAL: ANIMALS
+animals_vector <- c("Elephant", "Giraffe", "Donkey", "Horse")
+factor_animals_vector <- factor(animals_vector)
+print(factor_animals_vector)
+## ORDINAL: TEMPERATURE
+temperature_vector <- c("High", "Low", "High", "Low", "Medium")
+factor_temperature_vector <- factor(temperature_vector, order = TRUE, levels = c("Low", "Medium", "High"))
+print(factor_temperature_vector)
+
+# Factor Levels
+survey_vector <- c("M", "F", "F", "M", "M")
+factor_survey_vector <- factor(survey_vector)
+# specify the levels of factor_survey_vector
+  # WARNING: THE ORDER WITH WHICH YOU ASSIGN LEVELS IS IMPORTANT!
+    # IF YOU DON'T SPECIFY LEVELS, R WILL AUTOMATICALLY ASSIGN THEM ALPHABETICALLY
+levels(factor_survey_vector) <- c("Female", "Male")
+print(factor_survey_vector)
+# Generate summary for survey_vecotr
+summary(survey_vector)
+# Generate summary for factor_survey_vector
+summary(factor_survey_vector)
+
+## Comparing elements of a vector
+male <- factor_survey_vector[1]
+female <- factor_survey_vector[2]
+female < male
+## This should return "NA" when trying to compare values in a factor, since the idea doesn't make sense
+### This happened beacuse these are nominal categorical variables
+
+## Try comparing speeds, which are ordinal categorical variables
+## Assign to variable speed_vector: Analyst 1 "medium", Analyst 2 "slow", Analyst 3 "slow", Analyst 4 "medium", Analyst 5 "fast"
+speed_vector <- c("medium", "slow", "slow", "medium", "fast")
+## convert speed_vector to ordinal factor since categories have natural ordering
+factor_speed_vector <- factor(speed_vector, ordered = TRUE, levels = c("slow", "medium", "fast"))
+print(factor_speed_vector)
+summary(factor_speed_vector)
+
+### Comparing ordered factors
+da2 <- factor_speed_vector[2]
+da5 <- factor_speed_vector[5]
+da2 > da5
+## As you'll see if you run the code, da2 (data analyst 2) is NOT faster than da5 (data analyst 5)
+
+### DATA FRAMES
+
+
+
+
+
+
+
+
+
 
 
 
