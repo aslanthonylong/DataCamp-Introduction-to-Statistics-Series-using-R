@@ -260,7 +260,71 @@ rings_vector <- planets_df$rings
 print(rings_vector)
 # use the rings vector just created to select the data for the four planets with rings
 planets_df[rings_vector, ]
-# should show us only planets that have rings  "[1] TRUE TRUE TRUE TRUE"
+# should show us the names of only planets that have rings
+
+# using subset()
+# how to use: subset(my_df, subset = some condition)
+# select planets with diameter less than 1
+subset(planets_df, subset = diameter < 1)
+
+# SORTING
+# planets_df is pre-loaded in your workspace
+
+# Use order() to create positions
+positions <-  order(planets_df$diameter)
+
+# Use positions to sort planets_df
+planets_df[positions, ]
+
+### Creating lists
+# Use : list(comp1, comp2...)
+# Vector with numerics from 1 up to 10
+my_vector <- 1:10
+
+# Matrix with numerics from 1 up to 9
+my_matrix <- matrix(1:9, ncol = 3)
+
+# First 10 elements of the built-in data frame mtcars
+my_df <- mtcars[1:10,]
+
+# Adapt list() call to give the components names
+my_list <- list(my_vector, my_matrix, my_df)
+names(my_list) <- c("vec", "mat", "df")
+# Note: You can also give items in list names by doing the following:
+  ## my_list <- list(name1 = comp1, name2 = comp2, ...)
+# Print out my_list
+my_list
+
+# Selecting elements from a list
+# one to select a component of list is to use the numbered position of the component within the list
+  # example: my_list[1]
+    # this would pull vec or vector
+  # refer to names of componenets with [[]] or $
+    # example: my_list[["vector]]
+    # example2: my_list$vector
+  # sometimes, it'll be necessary to select specific elements out of components
+    # example: my_list[[2]][1]
+      # this would select the 2nd component called mat or my_matrix and then would select the first element of mat
+my_list[[2]][1]
+#check
+print(my_matrix)
+# it did select the first element (1) of the second componenet (my_matrix)
+
+# Practice with lists
+# Use the table from the exercise to define the comments and scores vectors
+scores <- c(4.6, 5, 4.8, 5, 4.2)
+comments <- c("I would watch it again", "Amazing!", "I liked it", "One of the best movies", "Fascinating plot")
+
+# Save the average of the scores vector as avg_review
+avg_review <- mean(scores)
+
+# Combine scores and comments into the reviews_df data frame
+reviews_df <- data.frame(scores, comments)
+
+# Create and print out a list, called departed_list
+departed_list <- list(movie_title, movie_actors, reviews_df, avg_review)
+print(departed_list)
+
 
 
 
